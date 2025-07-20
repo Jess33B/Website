@@ -1,0 +1,1390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nippon Semiconductors | Pioneering Silicon Innovation</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;700&family=Prata&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0f172a; /* Deep navy - sophistication */
+            --secondary: #d4a76a; /* Warm gold - premium feel */
+            --accent: #b91c1c; /* Deep red - energy */
+            --light: #f8f5f2; /* Warm ivory */
+            --dark: #121212;
+            --text: #333333;
+            --text-light: #6b7280;
+            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: var(--text);
+            line-height: 1.6;
+            background-color: var(--light);
+            overflow-x: hidden;
+        }
+        h1, h2, h3, h4 {
+            font-family: 'Prata', serif;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+        }
+        
+        /* Enhanced Header with Floating Effect */
+        header {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            background: rgba(15, 23, 42, 0.98);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(212, 167, 106, 0.3);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
+            transform: translateY(0);
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+        header.scrolled {
+            transform: translateY(-10px);
+            background: rgba(15, 23, 42, 0.92);
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            position: relative;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transition: var(--transition);
+        }
+        .logo:hover {
+            transform: scale(1.02);
+        }
+        .logo-chip {
+            width: 42px;
+            height: 42px;
+            background: var(--secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 6px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(212, 167, 106, 0.3);
+        }
+        .logo-chip:before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: 
+                linear-gradient(45deg, 
+                    transparent 45%, 
+                    rgba(255,255,255,0.3) 50%, 
+                    transparent 55%);
+            background-size: 10px 10px;
+            animation: shine 3s infinite;
+        }
+        @keyframes shine {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        .logo-text {
+            font-size: 1.5rem;
+            color: white;
+            letter-spacing: 1.2px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        /* Interactive Navigation with Gold Pulse */
+        .nav-links {
+            display: flex;
+            gap: 35px;
+        }
+        .nav-links a {
+            color: white;
+            font-weight: 500;
+            position: relative;
+            padding: 8px 0;
+            font-size: 1.05rem;
+        }
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background: var(--secondary);
+            transition: var(--transition);
+        }
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+        .nav-links a:hover {
+            color: var(--secondary);
+        }
+        
+        /* Hero with Parallax Circuit & Floating Chips */
+        .hero {
+            height: 100vh;
+            min-height: 800px;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            color: white;
+        }
+        .hero-bg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            z-index: -3;
+        }
+        .circuit-pattern {
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background-image: 
+                linear-gradient(to right, 
+                    rgba(212, 167, 106, 0.1) 1px, 
+                    transparent 1px),
+                linear-gradient(to bottom, 
+                    rgba(212, 167, 106, 0.1) 1px, 
+                    transparent 1px);
+            background-size: 60px 60px;
+            animation: moveCircuit 80s linear infinite;
+            z-index: -2;
+        }
+        @keyframes moveCircuit {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(-50%, -50%); }
+        }
+        .floating-chips {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+        .chip {
+            position: absolute;
+            background: rgba(212, 167, 106, 0.15);
+            border: 1px solid rgba(212, 167, 106, 0.3);
+            border-radius: 4px;
+            animation: float 15s infinite ease-in-out;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            transform: translateY(20px);
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 0.3s forwards;
+        }
+        @keyframes fadeInUp {
+            to { transform: translateY(0); opacity: 1; }
+        }
+        .hero h1 {
+            font-size: clamp(2.8rem, 5vw, 4.5rem);
+            margin-bottom: 25px;
+            line-height: 1.2;
+            text-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 40px;
+            opacity: 0.9;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* Enhanced Bronze Buttons with Depth */
+        .btn {
+            display: inline-block;
+            padding: 16px 36px;
+            background: var(--secondary);
+            color: var(--primary);
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 1.05rem;
+            transition: var(--transition);
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+            position: relative;
+            overflow: hidden;
+            border: none;
+            box-shadow: 0 4px 15px rgba(212, 167, 106, 0.4);
+            transform-style: preserve-3d;
+        }
+        .btn:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, 
+                transparent, 
+                rgba(255,255,255,0.3), 
+                transparent);
+            transition: var(--transition);
+        }
+        .btn:hover {
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 8px 25px rgba(212, 167, 106, 0.5);
+        }
+        .btn:hover:before {
+            left: 100%;
+        }
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--secondary);
+            color: var(--secondary);
+            box-shadow: none;
+        }
+        .btn-outline:hover {
+            background: var(--secondary);
+            color: var(--primary);
+        }
+        
+        /* Section Design with Gold Accents */
+        section {
+            padding: 140px 0;
+            position: relative;
+        }
+        .section-title {
+            text-align: center;
+            margin-bottom: 80px;
+            font-size: 3rem;
+            position: relative;
+            color: var(--primary);
+        }
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 3px;
+            background: var(--secondary);
+            margin: 25px auto 0;
+            box-shadow: 0 2px 8px rgba(212, 167, 106, 0.3);
+        }
+        
+        /* President's Vision with Portrait */
+        .vision {
+            background: white;
+        }
+        .vision-content {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .portrait {
+            flex: 1;
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            min-height: 500px;
+            background: url('https://images.unsplash.com/photo-1580927752452-89d86da3fa0a?q=80&w=1170&auto=format&fit=crop') center/cover;
+        }
+        .portrait:before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            right: -20px;
+            bottom: -20px;
+            border: 2px solid var(--secondary);
+            border-radius: 8px;
+            z-index: -1;
+        }
+        .quote-container {
+            flex: 1;
+        }
+        .quote {
+            font-size: 1.8rem;
+            font-style: italic;
+            line-height: 1.6;
+            color: var(--primary);
+            position: relative;
+            padding: 0 0 0 40px;
+            margin-bottom: 30px;
+        }
+        .quote:before {
+            content: '"';
+            position: absolute;
+            top: -20px;
+            left: 0;
+            font-size: 5rem;
+            color: var(--secondary);
+            opacity: 0.2;
+            line-height: 1;
+        }
+        .president-title {
+            color: var(--secondary);
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-top: 40px;
+        }
+        
+        /* Culture Cards with Hover Effect */
+        .culture-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+        .culture-card {
+            background: white;
+            border-radius: 8px;
+            padding: 50px 40px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        .culture-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 0;
+            background: var(--accent);
+            transition: var(--transition);
+        }
+        .culture-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 60px rgba(0,0,0,0.12);
+        }
+        .culture-card:hover:before {
+            height: 100%;
+        }
+        .culture-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(212, 167, 106, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 30px;
+            font-size: 1.8rem;
+            color: var(--secondary);
+        }
+        
+        /* Team Gallery with Hover Info */
+        .team-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+        .team-member {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            height: 380px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+        }
+        .team-photo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        .team-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 30px;
+            background: linear-gradient(transparent, rgba(15, 23, 42, 0.9));
+            color: white;
+            transform: translateY(100%);
+            transition: var(--transition);
+        }
+        .team-member:hover .team-info {
+            transform: translateY(0);
+        }
+        .team-member:hover .team-photo {
+            transform: scale(1.05);
+        }
+        
+        /* Enhanced Timeline */
+        .timeline {
+            position: relative;
+            max-width: 1000px;
+            margin: 80px auto 0;
+        }
+        .timeline:before {
+            content: '';
+            position: absolute;
+            width: 3px;
+            background: linear-gradient(to bottom, var(--secondary), var(--accent));
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -1.5px;
+        }
+        .timeline-item {
+            padding: 15px 40px;
+            position: relative;
+            width: 50%;
+            margin-bottom: 60px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: var(--transition);
+        }
+        .timeline-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .timeline-item:nth-child(odd) {
+            left: 0;
+            text-align: right;
+        }
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+        .timeline-dot {
+            width: 24px;
+            height: 24px;
+            background: white;
+            border: 4px solid var(--secondary);
+            border-radius: 50%;
+            position: absolute;
+            top: 20px;
+            z-index: 1;
+            box-shadow: 0 4px 12px rgba(212, 167, 106, 0.3);
+        }
+        .timeline-item:nth-child(odd) .timeline-dot {
+            right: -12px;
+        }
+        .timeline-item:nth-child(even) .timeline-dot {
+            left: -12px;
+        }
+        .timeline-content {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            position: relative;
+        }
+        .timeline-year {
+            color: var(--secondary);
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        
+        /* Careers Section */
+        .careers {
+            background: var(--light);
+        }
+        .departments {
+            display: flex;
+            gap: 40px;
+            margin-top: 60px;
+        }
+        .department-tabs {
+            flex: 0 0 250px;
+        }
+        .department-tab {
+            padding: 18px 25px;
+            background: white;
+            margin-bottom: 10px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: var(--transition);
+            border-left: 4px solid transparent;
+            font-weight: 500;
+        }
+        .department-tab.active {
+            border-left: 4px solid var(--secondary);
+            background: rgba(212, 167, 106, 0.1);
+            color: var(--secondary);
+        }
+        .department-tab:hover:not(.active) {
+            background: rgba(212, 167, 106, 0.05);
+        }
+        .department-content {
+            flex: 1;
+            background: white;
+            border-radius: 8px;
+            padding: 40px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+        }
+        .job-list {
+            display: none;
+        }
+        .job-list.active {
+            display: block;
+        }
+        .job-position {
+            padding: 25px;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            transition: var(--transition);
+        }
+        .job-position:hover {
+            background: rgba(212, 167, 106, 0.03);
+        }
+        .job-position h4 {
+            font-size: 1.3rem;
+            margin-bottom: 8px;
+            color: var(--primary);
+        }
+        .job-meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            color: var(--text-light);
+        }
+        .job-meta span {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        /* Recruitment Process */
+        .process-steps {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            margin-top: 80px;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .process-steps:before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(to right, var(--secondary), var(--accent));
+            top: 30px;
+            z-index: 0;
+        }
+        .step {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            width: 20%;
+        }
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: white;
+            color: var(--secondary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-weight: bold;
+            font-size: 1.5rem;
+            border: 3px solid var(--secondary);
+            box-shadow: 0 10px 30px rgba(212, 167, 106, 0.2);
+        }
+        .step p {
+            font-weight: 500;
+            font-size: 1.1rem;
+        }
+        
+        /* Contact Section */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            margin-top: 60px;
+        }
+        .contact-info {
+            margin-bottom: 40px;
+        }
+        .contact-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--secondary);
+            color: var(--primary);
+        }
+        .contact-method {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(212, 167, 106, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--secondary);
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+        .contact-details h4 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+            color: var(--primary);
+        }
+        .contact-details p {
+            color: var(--text-light);
+        }
+        
+        /* Footer with Gold Accent */
+        footer {
+            background: var(--primary);
+            color: white;
+            padding: 100px 0 40px;
+            position: relative;
+        }
+        footer:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 10px;
+            background: linear-gradient(to right, var(--secondary), var(--accent));
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 50px;
+            margin-bottom: 60px;
+        }
+        .footer-about {
+            max-width: 350px;
+        }
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 25px;
+        }
+        .footer-logo .logo-chip {
+            width: 36px;
+            height: 36px;
+            font-size: 0.9rem;
+        }
+        .footer-logo .logo-text {
+            font-size: 1.4rem;
+        }
+        .footer-about p {
+            color: rgba(255,255,255,0.7);
+            line-height: 1.7;
+            margin-bottom: 25px;
+        }
+        .footer-links h3 {
+            margin-bottom: 25px;
+            font-size: 1.3rem;
+            color: white;
+        }
+        .footer-links ul {
+            list-style: none;
+        }
+        .footer-links li {
+            margin-bottom: 15px;
+        }
+        .footer-links a {
+            color: rgba(255,255,255,0.7);
+            transition: var(--transition);
+            font-size: 1.05rem;
+            display: inline-block;
+        }
+        .footer-links a:hover {
+            color: var(--secondary);
+            transform: translateX(5px);
+        }
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+        .social-links a {
+            width: 45px;
+            height: 45px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            font-size: 1.2rem;
+        }
+        .social-links a:hover {
+            background: var(--secondary);
+            transform: translateY(-5px);
+            color: var(--primary);
+        }
+        .footer-bottom {
+            text-align: center;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.5);
+            font-size: 0.9rem;
+        }
+        
+        /* Recruitment Page Styles */
+        .recruitment-hero {
+            height: 60vh;
+            min-height: 500px;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.9)), 
+                        url('https://images.unsplash.com/photo-1521791136064-7986c2920216?q=80&w=2070&auto=format&fit=crop') center/cover;
+            color: white;
+        }
+        .application-form {
+            max-width: 800px;
+            margin: 80px auto;
+            background: white;
+            border-radius: 8px;
+            padding: 60px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+        }
+        .form-group {
+            margin-bottom: 30px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 500;
+            color: var(--primary);
+        }
+        .form-control {
+            width: 100%;
+            padding: 14px 20px;
+            border: 1px solid rgba(0,0,0,0.1);
+            border-radius: 4px;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+        .form-control:focus {
+            outline: none;
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 3px rgba(212, 167, 106, 0.2);
+        }
+        .form-submit {
+            text-align: center;
+            margin-top: 40px;
+        }
+        
+        /* Responsive Adjustments */
+        @media (max-width: 1200px) {
+            section {
+                padding: 100px 0;
+            }
+            .vision-content {
+                flex-direction: column;
+            }
+            .portrait {
+                min-height: 400px;
+                width: 100%;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .nav-links {
+                display: none;
+            }
+            .timeline:before {
+                left: 31px;
+            }
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+                text-align: left !important;
+            }
+            .timeline-item:nth-child(even) {
+                left: 0;
+            }
+            .timeline-dot {
+                left: 27px;
+            }
+            .departments {
+                flex-direction: column;
+            }
+            .department-tabs {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 10px;
+                flex: 1;
+            }
+            .department-tab {
+                margin-bottom: 0;
+                border-left: none;
+                border-bottom: 3px solid transparent;
+            }
+            .department-tab.active {
+                border-left: none;
+                border-bottom: 3px solid var(--secondary);
+            }
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+            .application-form {
+                padding: 40px 30px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero {
+                min-height: 700px;
+            }
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            .hero p {
+                font-size: 1.1rem;
+            }
+            .section-title {
+                font-size: 2.2rem;
+                margin-bottom: 50px;
+            }
+            .quote {
+                font-size: 1.5rem;
+                padding: 0 30px;
+            }
+            .process-steps {
+                flex-wrap: wrap;
+                gap: 40px;
+            }
+            .step {
+                width: 45%;
+            }
+            .process-steps:before {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header with Microchip Logo -->
+    <header id="main-header">
+        <div class="container">
+            <nav class="navbar">
+                <a href="index.html" class="logo">
+                    <div class="logo-chip">
+                        <i class="fas fa-microchip" style="color: var(--primary);"></i>
+                    </div>
+                    <span class="logo-text">NIPPON SEMI</span>
+                </a>
+                <div class="nav-links">
+                    <a href="index.html#vision">Vision</a>
+                    <a href="index.html#culture">Culture</a>
+                    <a href="index.html#history">History</a>
+                    <a href="careers.html">Careers</a>
+                    <a href="index.html#contact">Contact</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero with Animated Circuit Background -->
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="circuit-pattern"></div>
+        <div class="floating-chips">
+            <div class="chip" style="width: 80px; height: 60px; top: 20%; left: 10%; animation-delay: 0s;"></div>
+            <div class="chip" style="width: 60px; height: 80px; top: 60%; left: 15%; animation-delay: 2s;"></div>
+            <div class="chip" style="width: 100px; height: 70px; top: 30%; right: 10%; animation-delay: 1s;"></div>
+            <div class="chip" style="width: 70px; height: 90px; bottom: 20%; right: 15%; animation-delay: 3s;"></div>
+        </div>
+        <div class="container">
+            <div class="hero-content">
+                <h1>Precision Engineered Silicon Solutions</h1>
+                <p>Pioneering semiconductor technologies that power the world's most advanced computing platforms since 1985.</p>
+                <div style="display: flex; gap: 20px; justify-content: center;">
+                    <a href="#vision" class="btn">Explore Our Vision</a>
+                    <a href="careers.html" class="btn btn-outline">Join Our Team</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- President's Vision Section -->
+    <section id="vision" class="vision">
+        <div class="container">
+            <h2 class="section-title">President's Vision</h2>
+            <div class="vision-content">
+                <div class="portrait"></div>
+                <div class="quote-container">
+                    <blockquote class="quote">
+                        At Nippon Semiconductors, we don't just follow technological trends - we create them. Our commitment to excellence in semiconductor innovation is the foundation upon which we build the future of computing.
+                    </blockquote>
+                    <p class="president-title">SHINGO NAKAMURA</p>
+                    <p>President & Chief Executive Officer</p>
+                    <div style="margin-top: 40px;">
+                        <h3 style="color: var(--primary); margin-bottom: 20px;">Our Mission</h3>
+                        <p style="color: var(--text-light); line-height: 1.8; max-width: 600px;">
+                            To push the boundaries of semiconductor technology through relentless innovation, while maintaining the highest standards of quality and ethical business practices. We aim to create solutions that don't just meet current needs, but anticipate future challenges.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Culture Section -->
+    <section id="culture" class="culture" style="background: var(--light);">
+        <div class="container">
+            <h2 class="section-title">Our Culture</h2>
+            <div class="culture-grid">
+                <div class="culture-card">
+                    <div class="culture-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3>Innovation First</h3>
+                    <p style="color: var(--text-light); line-height: 1.7;">
+                        We dedicate 20% of engineering time to pure research and breakthrough projects. Our innovation labs foster creativity without constraints.
+                    </p>
+                </div>
+                <div class="culture-card">
+                    <div class="culture-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h3>Global Collaboration</h3>
+                    <p style="color: var(--text-light); line-height: 1.7;">
+                        Our teams across 12 countries work in perfect synchronization, sharing knowledge across time zones to accelerate progress.
+                    </p>
+                </div>
+                <div class="culture-card">
+                    <div class="culture-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3>Sustainable Growth</h3>
+                    <p style="color: var(--text-light); line-height: 1.7;">
+                        Committed to reducing our environmental impact through green manufacturing and energy-efficient chip designs.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section style="background: white;">
+        <div class="container">
+            <h2 class="section-title">Our Global Team</h2>
+            <div class="team-gallery">
+                <div class="team-member">
+                    <img src="https://images.unsplash.com/photo-1571260898933-5f5ba0a5d4f6?q=80&w=2070&auto=format&fit=crop" alt="Research Team" class="team-photo">
+                    <div class="team-info">
+                        <h3>Advanced Research Division</h3>
+                        <p>Tokyo, Japan</p>
+                        <p style="margin-top: 10px; opacity: 0.9;">120+ researchers pushing the boundaries of semiconductor physics</p>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2070&auto=format&fit=crop" alt="Design Team" class="team-photo">
+                    <div class="team-info">
+                        <h3>Chip Design Team</h3>
+                        <p>Bangalore, India</p>
+                        <p style="margin-top: 10px; opacity: 0.9;">250+ engineers creating next-generation architectures</p>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=2070&auto=format&fit=crop" alt="Manufacturing Team" class="team-photo">
+                    <div class="team-info">
+                        <h3>Manufacturing Excellence</h3>
+                        <p>Hsinchu, Taiwan</p>
+                        <p style="margin-top: 10px; opacity: 0.9;">World-class fabrication facilities operating at 5nm and below</p>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2070&auto=format&fit=crop" alt="Leadership Team" class="team-photo">
+                    <div class="team-info">
+                        <h3>Executive Leadership</h3>
+                        <p>Global Headquarters</p>
+                        <p style="margin-top: 10px; opacity: 0.9;">Guiding our global operations with decades of experience</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- History Timeline -->
+    <section id="history" class="history" style="background: var(--light);">
+        <div class="container">
+            <h2 class="section-title">Our Journey</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-year">1985</div>
+                        <p>Founded in Tokyo as Nakamura Semiconductor Research Laboratory with 5 engineers focused on memory chip innovation</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-year">1992</div>
+                        <p>First major breakthrough - developed high-density DRAM technology that doubled industry standards</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-year">1999</div>
+                        <p>Launched first commercial processor - the NS-1000 series revolutionized embedded systems</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-year">2008</div>
+                        <p>Opened first international design center in Silicon Valley, began expansion into AI accelerators</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-year">2015</div>
+                        <p>Introduced industry-leading low-power AI chips adopted by major tech firms worldwide</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-year">2023</div>
+                        <p>Announced $5B investment in 2nm chip development program with new fabrication facilities</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-year">2025</div>
+                        <p>Planned launch of quantum computing semiconductor division with first prototypes</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Careers Section -->
+    <section id="careers" class="careers" style="background: white;">
+        <div class="container">
+            <h2 class="section-title">Career Opportunities</h2>
+            <div class="departments">
+                <div class="department-tabs">
+                    <div class="department-tab active" data-tab="engineering">Engineering</div>
+                    <div class="department-tab" data-tab="research">Research</div>
+                    <div class="department-tab" data-tab="manufacturing">Manufacturing</div>
+                    <div class="department-tab" data-tab="business">Business</div>
+                </div>
+                <div class="department-content">
+                    <div class="job-list active" id="engineering">
+                        <div class="job-position">
+                            <h4>Senior VLSI Design Engineer</h4>
+                            <div class="job-meta">
+                                <span><i class="fas fa-map-marker-alt"></i> Bangalore, India</span>
+                                <span><i class="fas fa-briefcase"></i> Full-time</span>
+                                <span><i class="fas fa-level-up-alt"></i> Senior</span>
+                            </div>
+                            <p style="color: var(--text-light);">Lead architecture development for next-generation processors targeting AI workloads...</p>
+                            <a href="careers-senior-vlsi.html" class="btn" style="margin-top: 20px; padding: 10px 25px; font-size: 0.9rem;">View Position</a>
+                        </div>
+                        <div class="job-position">
+                            <h4>Physical Design Specialist</h4>
+                            <div class="job-meta">
+                                <span><i class="fas fa-map-marker-alt"></i> Tokyo, Japan</span>
+                                <span><i class="fas fa-briefcase"></i> Full-time</span>
+                                <span><i class="fas fa-level-up-alt"></i> Mid-level</span>
+                            </div>
+                            <p style="color: var(--text-light);">Optimize chip layouts for maximum performance and power efficiency at 5nm and below...</p>
+                            <a href="careers-physical-design.html" class="btn" style="margin-top: 20px; padding: 10px 25px; font-size: 0.9rem;">View Position</a>
+                        </div>
+                    </div>
+                    <div class="job-list" id="research">
+                        <!-- Research positions would go here -->
+                    </div>
+                    <div class="job-list" id="manufacturing">
+                        <!-- Manufacturing positions would go here -->
+                    </div>
+                    <div class="job-list" id="business">
+                        <!-- Business positions would go here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recruitment Process -->
+    <section style="background: var(--primary); color: white;">
+        <div class="container">
+            <h2 class="section-title" style="color: white;">Our Recruitment Process</h2>
+            <div class="process-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <p>Application Review</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <p>Technical Screening</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <p>Team Interview</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <p>Executive Review</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">5</div>
+                    <p>Offer Extended</p>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 60px;">
+                <a href="careers.html" class="btn" style="background: white; color: var(--primary);">View All Open Positions</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" style="background: white;">
+        <div class="container">
+            <h2 class="section-title">Contact Us</h2>
+            <div class="contact-grid">
+                <div>
+                    <div class="contact-info">
+                        <h3>General Inquiries</h3>
+                        <div class="contact-method">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h4>Email</h4>
+                                <p>info@nipponsemi.co.jp</p>
+                            </div>
+                        </div>
+                        <div class="contact-method">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h4>Phone</h4>
+                                <p>+81 3 1234 5678</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contact-info">
+                        <h3>Press & Media</h3>
+                        <div class="contact-method">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h4>Email</h4>
+                                <p>press@nipponsemi.co.jp</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="contact-info">
+                        <h3>Headquarters</h3>
+                        <div class="contact-method">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h4>Address</h4>
+                                <p>3-5-1 Marunouchi, Chiyoda-ku<br>Tokyo 100-0005, Japan</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contact-info">
+                        <h3>Connect With Us</h3>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-youtube"></i></a>
+                            <a href="#"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <div class="footer-logo">
+                        <div class="logo-chip">
+                            <i class="fas fa-microchip" style="color: var(--primary); font-size: 0.9rem;"></i>
+                        </div>
+                        <span class="logo-text">NIPPON SEMI</span>
+                    </div>
+                    <p>Pioneering semiconductor solutions that power the world's most advanced technologies since 1985.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h3>Company</h3>
+                    <ul>
+                        <li><a href="#vision">Our Vision</a></li>
+                        <li><a href="#culture">Culture</a></li>
+                        <li><a href="#history">History</a></li>
+                        <li><a href="careers.html">Careers</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h3>Technology</h3>
+                    <ul>
+                        <li><a href="#">Research</a></li>
+                        <li><a href="#">Products</a></li>
+                        <li><a href="#">Patents</a></li>
+                        <li><a href="#">White Papers</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Use</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                        <li><a href="#">Compliance</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Nippon Semiconductors Holdings. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Recruitment Page (separate HTML file - careers.html) -->
+    <!--
+    <section class="recruitment-hero">
+        <div class="container">
+            <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+                <h1 style="font-size: 3rem; margin-bottom: 20px;">Join Our Team</h1>
+                <p style="font-size: 1.3rem; margin-bottom: 40px;">We're looking for brilliant minds to help shape the future of semiconductor technology</p>
+                <a href="#open-positions" class="btn">View Open Positions</a>
+            </div>
+        </div>
+    </section>
+    <section style="padding: 100px 0; background: white;">
+        <div class="container">
+            <div class="application-form">
+                <h2 style="font-size: 2.5rem; margin-bottom: 40px; color: var(--primary);">Application Form</h2>
+                <form>
+                    <div class="form-group">
+                        <label for="full-name">Full Name</label>
+                        <input type="text" id="full-name" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="position">Position Applying For</label>
+                        <select id="position" class="form-control" required>
+                            <option value="">Select Position</option>
+                            <option value="senior-vlsi">Senior VLSI Design Engineer</option>
+                            <option value="physical-design">Physical Design Specialist</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="resume">Upload Resume</label>
+                        <input type="file" id="resume" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="cover-letter">Cover Letter</label>
+                        <textarea id="cover-letter" class="form-control" rows="5"></textarea>
+                    </div>
+                    <div class="form-submit">
+                        <button type="submit" class="btn">Submit Application</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+    -->
+
+    <script>
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('main-header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Department tabs functionality
+        const departmentTabs = document.querySelectorAll('.department-tab');
+        departmentTabs.forEach(tab => {
+            tab.addEventListener('click', function() {
+                // Remove active class from all tabs
+                departmentTabs.forEach(t => t.classList.remove('active'));
+                // Add active class to clicked tab
+                this.classList.add('active');
+                // Hide all job lists
+                document.querySelectorAll('.job-list').forEach(list => {
+                    list.classList.remove('active');
+                });
+                // Show corresponding job list
+                const tabId = this.getAttribute('data-tab');
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+
+        // Timeline animation on scroll
+        const timelineItems = document.querySelectorAll('.timeline-item');
+        const animateOnScroll = () => {
+            timelineItems.forEach(item => {
+                const rect = item.getBoundingClientRect();
+                if (rect.top < window.innerHeight - 100) {
+                    item.classList.add('visible');
+                }
+            });
+        };
+
+        // Initialize animations
+        window.addEventListener('scroll', animateOnScroll);
+        window.addEventListener('load', animateOnScroll);
+    </script>
+</body>
+</html>
